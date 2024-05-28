@@ -13,6 +13,14 @@
 -   No history or recommendations
 -   Lack of features compared to the original app (for now)
 
+## To-do
+
+-   [ ] -   Add Album support
+-   [ ] -   Add queue suggestion by current song/playlist
+-   [ ] -   Add download
+-   Make the UI better
+-   More 🧑‍💻
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
