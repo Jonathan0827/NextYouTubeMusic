@@ -33,8 +33,8 @@ function Play() {
             return;
         }
         getVideoDetails(musics[currentMusic].videoId).then((res) => {
-            setDetail(res.data);
             setLoading(false);
+            setDetail(res.data);
             console.log(detail?.audioStreams[0].url);
         });
     }, [currentMusic, musics]);
@@ -62,7 +62,6 @@ function Play() {
                         autoPlay
                         className="invisible h-0"
                     />
-
                     <div className="w-[50vh] max-w-[90vw] flex justify-center flex-row">
                         <Button
                             onPress={() => setCurrentMusic(currentMusic - 1)}
@@ -89,6 +88,12 @@ function Play() {
                             <IoPlaySkipForward size={30} />
                         </Button>
                     </div>
+                    {currentMusic === 0 ? (
+                        <p className="text-lg text-zinc-400">
+                            If the music doesn't play, please skip and play
+                            again
+                        </p>
+                    ) : null}
                 </main>
             )}
         </main>
