@@ -15,6 +15,7 @@
 
 ## To-do
 
+-   [ ] -   Find better audio player as the current one has some issues
 -   [ ] -   Add Album support
 -   [ ] -   Add queue suggestion by current song/playlist
 -   [ ] -   Add download
