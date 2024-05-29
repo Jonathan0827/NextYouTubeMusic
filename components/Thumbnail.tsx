@@ -17,10 +17,11 @@ export default function Thumbnail({ vid }: { vid: string }) {
     return (
         <div>
             {loading ? (
-                <Skeleton className="aspect-square object-cover h-[50vh] max-w-[90vw] max-h-[90vw] rounded-[5vh]" />
+                <Skeleton className="aspect-square object-cover h-[50vh] max-w-[90vw] max-h-[90vw] rounded-lg" />
             ) : (
                 <Image
-                    className="aspect-square object-cover h-[50vh] max-w-[90vw] max-h-[90vw] rounded-[5vh]"
+                    className="aspect-square object-cover h-[50vh] max-w-[90vw] max-h-[90vw]"
+                    radius="lg"
                     isBlurred
                     src={videoDetails?.thumbnailUrl}
                     alt={videoDetails?.title}

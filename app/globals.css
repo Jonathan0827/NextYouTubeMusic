@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomOut {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
+}
+
+.zoom-in {
+    animation: zoomIn 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.zoom-out {
+    animation: zoomOut 0.3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes skip {
+    0% {
+        opacity: 1;
+        right: 0px;
+    }
+    33% {
+        opacity: 0.5;
+        right: -10px;
+    }
+    34% {
+        opacity: 0;
+        right: -10px;
+    }
+    66% {
+        opacity: 0;
+        right: 5px;
+    }
+    100% {
+        opacity: 1;
+        right: 0px;
+    }
+}
+
+.nextAnimate {
+    animation: skip 0.5s forwards;
+}
+.backAnimate {
+    animation: skip 0.5s forwards;
+    animation-direction: reverse;
+}

@@ -15,8 +15,9 @@
 
 ## To-do
 
--   [ ] -   Find better audio player as the current one has some issues
--   [ ] -   Add Album support
+-   [x] -   Find better audio player as the current one has some issues
+-   [ ] -   Fix stuffs for iOS
+-   [ ] -   Add Album, Music support
 -   [ ] -   Add queue suggestion by current song/playlist
 -   [ ] -   Add download
 -   Make the UI better
