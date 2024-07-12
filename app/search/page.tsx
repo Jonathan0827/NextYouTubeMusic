@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, Suspense } from "react";
 import {
-    Button,
     Image,
     Link,
     Input,
@@ -31,9 +30,11 @@ function Search() {
                 setPlaylists(res.data.data.data);
                 // setPlay(true);
             });
-            await searchMusic(searchQuery).then((res) => {
-                setMusics(res.data.data.data);
+            const musicData = await searchMusic(searchQuery).then((res) => {
+                return res;
             });
+            console.log(musicData);
+            // setMusics(musicData || []); // Provide a default value for the musics state
         };
         search().then(() => setLoading(false));
         // console.log("a");
@@ -57,32 +58,39 @@ function Search() {
                 >
                     <AccordionItem key="pl" title="Playlists">
                         {/* <h1 className="text-3xl font-extrabold">Playlists</h1> */}
-                        {playlists.map((playlist: playlist) => (
-                            <Link
-                                href={`/play?id=${playlist.playlistId}&type=0`}
-                            >
-                                <div key={playlist.thumbnailUrl} className="">
-                                    <Image
-                                        src={playlist.thumbnailUrl}
-                                        radius="lg"
-                                        isZoomed
-                                        className="w-fit h-fit object-cover aspect-square"
-                                        onClick={() => {
-                                            readPlaylist(
-                                                playlist.playlistId
-                                            ).then((res) => {
-                                                console.log(res);
-                                                setMusics(res.data.data.data);
-                                            });
-                                        }}
-                                    />
-                                    <p className="text-xl font-bold">
-                                        {playlist.title}
-                                    </p>
-                                    {playlist.totalSongs} songs
-                                </div>
-                            </Link>
-                        ))}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 m-3">
+                            {playlists.map((playlist: playlist) => (
+                                <Link
+                                    href={`/play?id=${playlist.playlistId}&type=0`}
+                                >
+                                    <div
+                                        key={playlist.thumbnailUrl}
+                                        className=""
+                                    >
+                                        <Image
+                                            src={playlist.thumbnailUrl}
+                                            radius="lg"
+                                            isZoomed
+                                            className="w-fit h-fit object-cover aspect-square"
+                                            onClick={() => {
+                                                readPlaylist(
+                                                    playlist.playlistId
+                                                ).then((res) => {
+                                                    console.log(res);
+                                                    setMusics(
+                                                        res.data.data.data
+                                                    );
+                                                });
+                                            }}
+                                        />
+                                        <p className="text-xl font-bold">
+                                            {playlist.title}
+                                        </p>
+                                        {playlist.totalSongs} songs
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
                     </AccordionItem>
                     <AccordionItem key="mc" title="Musics">
                         {/* <h1 className="text-3xl font-extrabold ">Songs</h1> */}

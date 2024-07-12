@@ -1,9 +1,6 @@
 "use client";
 import {
     getVideoDetails,
-    readPlaylist,
-    searchMusic,
-    searchPlaylist,
 } from "@/utils/api";
 import { Button, Image, Link } from "@nextui-org/react";
 import { useEffect, useState } from "react";

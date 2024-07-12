@@ -12,9 +12,8 @@ import {
     IoPlaySkipForward,
     IoPause,
 } from "react-icons/io5";
-import { motion } from "framer-motion";
 import { VideoDetails } from "@/types/video-details";
-
+import {isNil} from "@toss/utils"
 function Play() {
     const type = useSearchParams().get("type") || "";
     const id = useSearchParams().get("id") || "";
@@ -34,7 +33,7 @@ function Play() {
         });
     }, [id]);
     useEffect(() => {
-        if (musics.length === 0) return;
+        if (musics.length === 0 || isNil(musics)) return;
         console.log(typeof musics[currentMusic].videoId);
         if (typeof musics[currentMusic].videoId === "object") {
             setCurrentMusic(currentMusic + 1);
@@ -61,7 +60,7 @@ function Play() {
                 <main className="flex justify-center items-center align-middle h-[95vh] flex-col">
                     <Thumbnail vid={musics[currentMusic].videoId} />
 
-                    <p className="text-4xl font-bold">
+                    <p className="text-4xl font-bold line-clamp-1">
                         {musics[currentMusic].name}
                     </p>
                     <p className="text-lg text-zinc-400">
